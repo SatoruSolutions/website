@@ -369,6 +369,78 @@
       margin: 0 0 48px;
     }
 
+    /* ---------- Claude Partner Network: Certified credibility band ---------- */
+    /* Compact trust band between hero and Approach. White ground so the official
+       badge (warm grey right panel) keeps a visible edge. Badge files are used as
+       supplied: only scaled proportionally, never cropped, recoloured or redrawn. */
+    section.partner-band {
+      padding: 56px 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+    .partner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 56px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .partner__badge {
+      flex: 0 0 auto;
+      display: block;
+      width: 300px;          /* 600px source = 2x for high-density screens */
+      max-width: 100%;
+      height: auto;
+      padding: 8px;          /* clear space around the official mark */
+      box-sizing: content-box;
+    }
+    .partner__text { flex: 1 1 auto; max-width: 58ch; }
+    .partner__text h2 {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: clamp(1.25rem, 2.2vw, 1.45rem);
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+      color: var(--ink);
+      margin: 0 0 10px;
+    }
+    .partner__statement {
+      margin: 0 0 6px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .partner__support {
+      margin: 0 0 14px;
+      color: var(--ink-soft);
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+    .partner__link {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--burgundy);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(107,31,42,0.25);
+      padding-bottom: 1px;
+      transition: color 0.18s ease, border-color 0.18s ease;
+    }
+    .partner__link:hover { color: var(--burgundy-d); border-color: var(--ember); }
+
+    /* Footer: small official Certified chip */
+    .footer__partner { display: inline-block; line-height: 0; border-radius: 10px; }   /* focus ring follows chip corners */
+    .footer__partner img {
+      width: 84px;           /* 180px source chip, scaled proportionally */
+      height: auto;
+      display: block;
+    }
+    .footer__end {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 28px 40px;
+    }
+
     /* ---------- FAQ (native accordion, no JS) ---------- */
     .faq {
       max-width: 760px;
@@ -517,6 +589,19 @@
       .footer__bottom { flex-direction: column; align-items: flex-start; }
     }
 
+    /* Certified band: stack on tablet-portrait and below */
+    @media (max-width: 760px) {
+      section.partner-band { padding: 48px 0; }
+      .partner { flex-direction: column; gap: 22px; text-align: center; }
+      .partner__badge { width: min(300px, 100%); padding: 6px; }
+      .partner__text { max-width: 46ch; }
+    }
+    @media (max-width: 640px) {
+      section.partner-band { padding: 40px 0; }
+      .partner__badge { width: min(280px, 100%); }
+      .footer__end { flex-direction: column; align-items: flex-start; gap: 24px; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       * { scroll-behavior: auto !important; transition: none !important; }
     }
@@ -558,6 +643,24 @@
         and build the confidence to use automation responsibly.
       </p>
       <a class="btn-primary" href="mailto:hello@satorusolutions.com">Contact Us</a>
+    </div>
+  </section>
+
+  <!-- ============ CLAUDE PARTNER NETWORK — CERTIFIED ============ -->
+  <section class="partner-band" aria-labelledby="partner-heading">
+    <div class="wrap">
+      <div class="partner">
+        <img class="partner__badge"
+             src="Partner_Badge_-_Certified_PNG__Horizontal_.png"
+             width="600" height="190"
+             alt="Certified Services Partner, Claude Partner Network badge">
+        <div class="partner__text">
+          <h2 id="partner-heading">Certified in the Claude Partner Network</h2>
+          <p class="partner__statement">Satoru Solutions Limited is Certified in the Claude Partner Network.</p>
+          <p class="partner__support">Our team holds Claude certifications and delivers practical Claude solutions for organisations.</p>
+          <a class="partner__link" href="https://claude.com/partners" target="_blank" rel="noopener">Learn about the Claude Partner Network &rarr;</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -757,17 +860,24 @@
         <a class="brand" href="/" aria-label="Satoru Solutions home">
           <img class="footer__logo" src="satorusol_logo_clear.png" alt="Satoru Solutions Logo">
         </a>
-        <nav class="footer__nav" aria-label="Footer">
-          <a href="#faq">About</a>
-          <a href="#approach">Approach</a>
-          <a href="mailto:hello@satorusolutions.com">Contact</a>
-        </nav>
+        <div class="footer__end">
+          <nav class="footer__nav" aria-label="Footer">
+            <a href="#faq">About</a>
+            <a href="#approach">Approach</a>
+            <a href="mailto:hello@satorusolutions.com">Contact</a>
+          </nav>
+          <a class="footer__partner" href="https://claude.com/partners" target="_blank" rel="noopener"
+             aria-label="Satoru Solutions Limited is Certified in the Claude Partner Network">
+            <img src="Partner_Badge_-_Certified_PNG__Chip_.png" width="180" height="180"
+                 alt="Certified Services Partner, Claude Partner Network badge">
+          </a>
+        </div>
       </div>
 
       <div class="footer__divider"></div>
 
       <div class="footer__bottom">
-        <p class="footer__copy">&copy; 2026 Satoru Solutions</p>
+        <p class="footer__copy">&copy; 2026 Satoru Solutions Limited</p>
         <div class="footer__legal">
           <a href="mailto:hello@satorusolutions.com">hello@satorusolutions.com</a>
           <a href="#">Privacy Policy</a>
